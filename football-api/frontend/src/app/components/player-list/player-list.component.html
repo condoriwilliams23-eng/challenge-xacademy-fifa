@@ -1,0 +1,48 @@
+<div class="list-container">
+  <h2>Listado de Jugadores</h2>
+
+  <div class="filters">
+    <input type="text" [(ngModel)]="nameFilter" placeholder="Nombre" />
+    <input type="text" [(ngModel)]="clubFilter" placeholder="Club" />
+    <input type="text" [(ngModel)]="positionFilter" placeholder="Posición (ej: ST)" />
+    <button (click)="search()">Buscar</button>
+    <button (click)="clearFilters()">Limpiar</button>
+    <button (click)="exportCsv()">Exportar CSV</button>
+    <a routerLink="/players/create" class="btn-link">Crear Jugador</a>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Club</th>
+        <th>Posición</th>
+        <th>Nacionalidad</th>
+        <th>Rating</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of players">
+        <td>{{ p.id }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.club }}</td>
+        <td>{{ p.position }}</td>
+        <td>{{ p.nationality }}</td>
+        <td>{{ p.rating }}</td>
+        <td>
+          <a [routerLink]="['/players', p.id]">Ver</a> |
+          <a [routerLink]="['/players', p.id, 'edit']">Editar</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination">
+    <button (click)="prevPage()" [disabled]="page <= 1">Anterior</button>
+    <span>Página {{ page }} de {{ totalPages }} (Total: {{ total }})</span>
+    <button (click)="nextPage()" [disabled]="page >= totalPages">Siguiente</button>
+  </div>
+</div>
+

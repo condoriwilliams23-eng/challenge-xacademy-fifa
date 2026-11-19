@@ -4,6 +4,9 @@ FROM node:22
 
 WORKDIR /usr/src/app
 
+ENV CI=true
+ENV NG_CLI_ANALYTICS=false
+
 COPY package*.json ./
 RUN npm install
 

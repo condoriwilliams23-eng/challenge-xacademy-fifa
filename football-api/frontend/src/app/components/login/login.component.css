@@ -1,0 +1,27 @@
+.login-container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.field {
+  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.field input {
+  padding: 6px;
+  margin-top: 4px;
+}
+
+.error {
+  color: red;
+}
+
+.switch {
+  margin-top: 15px;
+}
+

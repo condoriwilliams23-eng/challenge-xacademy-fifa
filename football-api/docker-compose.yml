@@ -2,6 +2,7 @@ services:
   mysql_db:
     image: mysql:8.0
     container_name: santex_academy_football_api_db
+    restart: always
     env_file:
       - .env
     environment:
@@ -10,19 +11,26 @@ services:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "3306:3306" # Make sure it is the same port as DB_PORT in your .env file'
+      - "3307:3306"
     volumes:
       - db_data:/var/lib/mysql
       - ./docker/db:/docker-entrypoint-initdb.d 
     command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 25
 
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: santex_academy_backend
+    restart: on-failure
     depends_on:
-      - mysql_db
+      mysql_db:
+        condition: service_healthy
     env_file:
       - .env
     environment:
@@ -43,6 +51,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: santex_academy_frontend
+    restart: on-failure
     ports:
       - "4200:4200"
     volumes:
@@ -50,8 +59,10 @@ services:
       - /usr/src/app/node_modules
     depends_on:
       - backend
+    environment:
+      CI: "true"
+      NG_CLI_ANALYTICS: "false"
     command: npm run start -- --host 0.0.0.0
-
 
 volumes:
   db_data:

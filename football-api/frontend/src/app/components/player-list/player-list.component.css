@@ -1,0 +1,49 @@
+.list-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.filters input,
+.filters button {
+  padding: 6px 10px;
+}
+
+.btn-link {
+  padding: 6px 10px;
+  background-color: #1976d2;
+  color: white;
+  text-decoration: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+  background-color: #fff;
+}
+
+th,
+td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #eee;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+

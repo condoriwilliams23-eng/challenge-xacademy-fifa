@@ -1,0 +1,58 @@
+<div class="form-container">
+  <h2>{{ isEditMode ? 'Editar Jugador' : 'Crear Jugador' }}</h2>
+
+  <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label>Nombre:</label>
+      <input type="text" formControlName="name" />
+    </div>
+
+    <div class="field">
+      <label>Club:</label>
+      <input type="text" formControlName="club" />
+    </div>
+
+    <div class="field">
+      <label>Posición:</label>
+      <input type="text" formControlName="position" placeholder="ST, CM, CB..." />
+    </div>
+
+    <div class="field">
+      <label>Nacionalidad:</label>
+      <input type="text" formControlName="nationality" />
+    </div>
+
+    <div class="field">
+      <label>Rating (1-99):</label>
+      <input type="number" formControlName="rating" />
+    </div>
+
+    <div class="field">
+      <label>Velocidad (1-99):</label>
+      <input type="number" formControlName="speed" />
+    </div>
+
+    <div class="field">
+      <label>Tiro (1-99):</label>
+      <input type="number" formControlName="shooting" />
+    </div>
+
+    <div class="field">
+      <label>Regate (1-99):</label>
+      <input type="number" formControlName="dribbling" />
+    </div>
+
+    <div class="field">
+      <label>Pase (1-99):</label>
+      <input type="number" formControlName="passing" />
+    </div>
+
+    <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="playerForm.invalid">Guardar</button>
+      <a routerLink="/players">Cancelar</a>
+    </div>
+  </form>
+</div>
+

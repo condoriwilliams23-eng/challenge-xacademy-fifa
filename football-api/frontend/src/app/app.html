@@ -1,3 +1,10 @@
+<div class="header">
+  <h1>Welcome to the FE - Jugadores FIFA</h1>
+  <nav *ngIf="authService.isAuthenticated()">
+    <a routerLink="/players">Listado</a> |
+    <a routerLink="/players/create">Crear Jugador</a> |
+    <button (click)="logout()">Cerrar Sesión</button>
+  </nav>
+</div>
 
-<h1>Welcome to the FE</h1>
-<app-player></app-player>
+<router-outlet></router-outlet>

@@ -1,0 +1,17 @@
+.player-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.actions {
+  margin: 15px 0;
+}
+
+.chart-box {
+  max-width: 400px;
+  margin-top: 20px;
+}
+
